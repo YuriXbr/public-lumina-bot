@@ -1,0 +1,65 @@
+{
+  "bot": {
+    "token": "",
+    "clientId": "",
+    "prefix": "l!",
+    "status": "online",
+    "activity": {
+      "type": "PLAYING",
+      "name": "Hello World"
+    },
+    "devmode": true
+  },
+  "staff": {
+    "owners": [
+      "",
+      ""
+    ],
+    "admins": [],
+    "moderators": []
+  },
+  "guilds": {
+    "main": "",
+    "logs": {
+      "guild": "",
+      "startChannel": "",
+      "errorChannel": "",
+      "eventsChannel": "",
+      "debugChannel": "",
+      "staffChannel": "",
+      "dashboardChannel": "",
+      "allChannel": ""
+    },
+    "deployGuilds": [
+      "",
+      ""
+    ],
+    "callTimer": {
+      "enabled": true,
+      "notificationGuild": "",
+      "notificationChannel": "",
+      "users": {
+        "user1": "",
+        "user2": ""
+      }
+    }
+  },
+  "riotApi": {
+    "apiKey": "RGAPI-YOUR_RIOT_API_KEY",
+    "region": "",
+    "server": "",
+    "baseUrl": "api.riotgames.com"
+  },
+  "dashBoard": {
+    "enabled": true,
+    "port": 3000,
+    "ip": "localhost",
+    "auth": {
+      "randPasswordLength": 32,
+      "randPasswordSlice": -16,
+      "randomPassword": false,
+      "username": "admin",
+      "password": "admin"
+    }
+  }
+}

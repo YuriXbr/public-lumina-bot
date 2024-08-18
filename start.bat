@@ -1,0 +1,2 @@
+SET IP=192.168.15.112
+NODE index.js

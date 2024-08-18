@@ -1,0 +1,8 @@
+arrumar a cor da mensagem de feedback
+colocar botão de revelar a senha na tela de login
+colocar mensagem de erro na tela de login
+
+adicionar o resto das configurações no dashboard
+cirar um icone de verdade para o bot
+
+criar o bot de verdadekkkkkkkkkpqp n tem nada de util nessa porra vtnc

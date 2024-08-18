@@ -1,0 +1,249 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.header {
+    padding: 10px;
+    background-color: #333;
+    text-align: right;
+}
+
+.header button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.header button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Garantir que o grupo de input ocupe 100% da largura */
+}
+
+.input-group input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    margin-right: -1px; /* Remover a sobreposição de bordas */
+}
+
+div#input-header {
+    display: flex;
+    align-items: center;
+}
+
+span#simbols-header {
+    display: contents;
+}
+
+label#devmode-text {
+    display: contents;
+}
+
+.input-group .reveal-button {
+    padding: 10px;
+    background-color: #f0ad4e;
+    border: 1px solid #ccc;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Material Symbols Outlined';
+}
+
+.form-group select {
+    width: calc(100%); /* Ajustar largura para adicionar margem */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+div#terms {
+    display: flex;
+    align-items: center;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: calc(100% - 20px); /* Ajustar largura para adicionar margem */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.form-group button {
+    width: calc(100% - 10px); /* Ajustar largura para adicionar margem */
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.form-group button:hover {
+    width: calc(100% - 10px); /* Ajustar largura para adicionar margem */
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #72d176;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ajustar largura para dispositivos menores */
+    max-width: 400px;
+    text-align: center;
+    box-sizing: border-box; /* Garantir que o padding não ultrapasse a largura */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.input-group .reveal-button {
+    padding: 0 5px;
+    font-size: 24px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Material Symbols Outlined';
+}
+
+button#submitSessionId {
+    background-color: #47a6ff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button#submitSessionId:hover {
+    background-color: #6bb7ff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button#openModal {
+    background-color: #474747;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+button#openModal:hover {
+    background-color: #575757;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}	
+
+.success-message {
+    color: green;
+}
+
+.error-message {
+    color: red;
+}

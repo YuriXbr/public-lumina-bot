@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.4/purify.min.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+        <h1>Dashboard</h1>
+    <div class="container">
+        <button id="openModal">LOGIN</button>  TIP: You can found the password in the admin guild!
+        <form>
+            <div class="form-group">
+                <div id="input-header">
+                    <span class="material-symbols-outlined" id="simbols-header">badge</span> 
+                    <label for="token">Bot Token:</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="token" name="token" placeholder="Enter bot token">
+                    <span class="reveal-button" id="revealToken">visibility_off</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div id="input-header">
+                    <span class="material-symbols-outlined" id="simbols-header">fingerprint</span> 
+                    <label for="clientId">Client ID:</label>
+                </div>
+                <input type="text" id="clientId" name="clientId" placeholder="Enter client ID">
+            </div>
+            <div class="form-group">
+                <div id="input-header">
+                    <span class="material-symbols-outlined" id="simbols-header">outbound</span> 
+                    <label for="prefix">Command Prefix:</label>
+                </div>
+                <input type="text" id="prefix" name="prefix" placeholder="Enter command prefix">
+            </div>
+            <div class="form-group">
+                <div id="input-header">
+                    <span class="material-symbols-outlined" id="simbols-header">signal_wifi_statusbar_not_connected</span> 
+                    <label for="status">Bot Status:</label>
+                </div>
+                <select id="status" name="status">
+                    <option value="online">Online</option>
+                    <option value="idle">Idle</option>
+                    <option value="dnd">Do Not Disturb</option>
+                    <option value="invisible">Invisible</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div id="input-header"> 
+                    <span class="material-symbols-outlined" id="simbols-header">detection_and_zone</span> 
+                    <label for="activityType">Activity Type:</label>
+                </div>
+                <select id="activityType" name="activityType">
+                    <option value="PLAYING">Playing</option>
+                    <option value="WATCHING">Watching</option>
+                    <option value="LISTENING">Listening</option>
+                    <option value="STREAMING">Streaming</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div id="input-header">
+                    <span class="material-symbols-outlined" id="simbols-header">article</span> 
+                <label for="activityName">Activity Text:</label>
+                </div>
+                <input type="text" id="activityName" name="activityName" placeholder="Enter activity text">
+            </div>
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="devmode" name="devmode">
+                <label for="devmode" id="devmode-text">Dev Mode</label>
+            </div>
+            <div class="form-group">
+                <button type="submit" id="saveButton">SAVE</button>
+            </div>
+            <div id="error-message" style="color: red; display: none;"></div>
+        </form>
+    </div>
+
+    <div class="container">
+        <div id="terms">
+        <span class="material-symbols-outlined">policy</span> 
+        <span id="terms-Text">By using this service, you agree to Discord <a href="https://discord.com/terms">Terms of Service</a> and <a href="https://discord.com/privacy">Privacy Policy</a>.</span>
+        </div>
+    </div>
+
+    <!-- Modal for login -->
+    <div id="sessionModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <div class="form-group">
+                <div id="input-header">
+                    <span class="material-symbols-outlined" id="simbols-header">person</span> 
+                    <label for="usernameInput">Username:</label>
+                </div>
+                <input type="text" id="usernameInput" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <div id="input-header">
+                    <span class="material-symbols-outlined" id="simbols-header">lock</span> 
+                    <label for="passwordInput">Password:</label>
+                </div>
+                <input type="password" id="passwordInput" placeholder="Enter password">
+            </div>
+            <button id="submitSessionId">Submit</button>
+            <p id="errorMessage" style="display: none;">Invalid username or password. Please try again.</p>
+        </div>
+    </div>
+</body>
+</html>
