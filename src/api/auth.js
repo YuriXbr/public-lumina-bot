@@ -1,23 +1,37 @@
-const config = require('../private/config.json');
+const { logApiCall } = require('../utils/logger/logger.js');
+const fs = require('node:fs');
 const rateLimit = require('express-rate-limit');
+const config = require('../private/config.json');
+const cache = require('../private/cache.json');
 
 const passLen = config.dashBoard.auth.randPasswordLength
 const passSlice = config.dashBoard.auth.randPasswordSlice
-const generatedPassword = setPassword();
+let generatedPassword = null;
 
-function setPassword() {
-
-    let pass;
+async function setPassword() {
     if(config.dashBoard.auth.randomPassword) {
-        pass = Math.random().toString(passLen).slice(passSlice);
-
+        dashBoardPassword = Math.random().toString(passLen).slice(passSlice);
+        
     } else {
-        pass = config.dashBoard.auth.password;
+        dashBoardPassword = config.dashBoard.auth.password;
     }
-        console.log(`[AUTH] SENHA DO DASHBOARD CONFIGURADA.`);
-    return pass;
+
+    cache.cache.data.generatedPassword = dashBoardPassword;
+    cache.cache.data.username = config.dashBoard.auth.username;
+    generatedPassword = dashBoardPassword;
+    // using fs to save the password to the cache.json file
+    fs.writeFileSync(__dirname + '/../private/cache.json', JSON.stringify(cache, null, 2), (err) => {
+        if (err) {
+            console.log(err);
+        }
+    });
+
+
+    logApiCall('AUTH', 'setPassword', null, "DashBoard Password "+dashBoardPassword, dashBoardPassword, false, `Senha do dashboard configurada: ${dashBoardPassword}`);
+    return dashBoardPassword;
 }
 
+// Check if the user is authorized to access the dashboard
 async function checkAuth(req, res, next) {
     const { username, password } = req.headers;
     const connectionDate = new Date().toLocaleString();
@@ -52,6 +66,7 @@ const loginLimiter = rateLimit({
 
 module.exports = {
     checkAuth,
+    setPassword,
     generatedPassword,
     loginLimiter
 };

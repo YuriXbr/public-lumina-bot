@@ -1,0 +1,11 @@
+
+        Data: 02/09/2024
+        Hora: 09:10:06
+        -- Origem do comando: unknown
+        --- Função chamada: getSummonerInfo
+        ---- Params: {
+  "server": "americas",
+  "PUUID": "RxP1ciNrKbSXuhA_-d9Zy7lJX53vYAlV_hCq2G6jdkJ0iSp1Wicw3YPeUL6G3VwAORDdN5NeYPd-wQ"
+}
+        ---- Error: AxiosError: Request failed with status code 400
+        

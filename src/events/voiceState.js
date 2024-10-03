@@ -1,9 +1,10 @@
 const { Events } = require('discord.js');
 const config = require('../private/config.json');
+const { PermissionsBitField } = require('discord.js');
 
 const guildId = config.guilds.callTimer.notificationGuild; // guild id
 const notificationChannelId = config.guilds.callTimer.notificationChannel; // channel id
-const enabled = config.guilds.callTimer.enabled; // Verify if the module is enabled
+const callTimerEnabled = config.guilds.callTimer.enabled; // Verify if the module is enabled
 
 let callStartTimes = {}; // Store call start times for each pair of users
 let inVoiceChannels = {}; // Store voice channel status for each pair of users
@@ -11,9 +12,10 @@ let inVoiceChannels = {}; // Store voice channel status for each pair of users
 module.exports = {
 	name: Events.VoiceStateUpdate,
 	execute(oldState, newState) {
-		if (!enabled) return; // Verify if the module is enabled
-		
 		const guild = newState.guild; // Obter a guilda do novo estado
+
+		if (!callTimerEnabled) return; // Verify if the module is enabled
+		
 		if (guild.id !== guildId) return; // Garantir que estamos na guilda certa
 
 		const channel = guild.channels.cache.get(notificationChannelId);

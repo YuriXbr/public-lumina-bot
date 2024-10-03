@@ -1,6 +1,8 @@
 const chalk = require('chalk');
 const arrow = chalk.bold.cyan('LOG -> ')
 const alerta = chalk.yellowBright.bold;
+const api = chalk.bold.magenta('[API] ');
+const magentaBright = chalk.magentaBright;
 const verde = chalk.greenBright;
 const verdebold = chalk.greenBright.bold;
 const error = chalk.redBright.bold('[ERROR] ');
@@ -63,6 +65,8 @@ module.exports = {
     verdebold,
     bold,
     italic,
+    api,
+    magentaBright,
 
     LIGHTGREEN,
     GREEN,

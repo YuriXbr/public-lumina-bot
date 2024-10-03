@@ -1,0 +1,12 @@
+
+        Data: 30/08/2024
+        Hora: 22:32:25
+        -- Origem do comando: leagueMatchHistory
+        --- Função chamada: getAccountByRiotId
+        ---- Params: {
+  "region": "americas",
+  "gameName": "luck1213",
+  "tagLine": "yyxy"
+}
+        ---- Error: AxiosError: Request failed with status code 404
+        

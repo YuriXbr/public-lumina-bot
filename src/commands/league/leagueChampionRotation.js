@@ -1,5 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const api = require('../../api/riotApi.js');
+const { errorEmbed, loadingEmbed } = require('../../utils/embeds/cmdEmbeds.js');
+const { error } = require('../../utils/colorCodes.js');
 
 module.exports = {
     permission: 'default',
@@ -10,13 +12,21 @@ module.exports = {
         .setDescription('Shows the champions currently in rotation.'),
 
     async execute(interaction) {
-        interaction.deferReply("Fetching data...");
+        await interaction.deferReply("Fetching data...");
 
-        const rotationChampionsId = await api.getChampionRotation();
+        interaction.editReply({ embeds: [loadingEmbed] });
+
+        const rotationChampionsId = await api.getChampionRotation('leaguechampionrotation');
+        if(!rotationChampionsId) return errorEmbed('An error occurred while fetching the champions in rotation.', 'leaguechampionrotation', interaction, true);
+
         const rotationChampions = await Promise.all(rotationChampionsId.map(async (id) => {
-            return await api.fetchChampionName(id);
+            try {
+                return await api.fetchChampionName(id, 'leaguechampionrotation');
+            } catch (err) {
+                errorEmbed('An error occurred while fetching the champions name from ID', 'leaguechampionrotation', interaction, true);
+            }
         }));
-        console.log([rotationChampions]);
+        //console.log([rotationChampions]);
 
         // Create an embed to display the champions in rotation
         const embed = new EmbedBuilder()
@@ -25,9 +35,9 @@ module.exports = {
             .setColor('#0099ff')
             .setFooter({text: 'Powered by Riot Games API', iconURL: 'https://i.imgur.com/xU45ZZz.png'})
             .addFields(rotationChampions
-                .filter(champion => champion !== null) // Filtra campeões que não foram encontrados
+                .filter(champion => champion !== null)
                 .map(champion => {
-                    return { name: champion.id, value: `${champion.title}`,"inline": true };
+                    return { name: champion.id, value: `${champion.title}`, "inline": true };
                 })
             );
 

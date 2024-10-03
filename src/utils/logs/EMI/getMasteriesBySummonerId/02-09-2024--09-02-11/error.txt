@@ -1,0 +1,11 @@
+
+        Data: 02/09/2024
+        Hora: 09:02:11
+        -- Origem do comando: EMI
+        --- Função chamada: getMasteriesBySummonerId
+        ---- Params: {
+  "region": "americas",
+  "summonerId": "CADE A PIX"
+}
+        ---- Error: AxiosError: Request failed with status code 403
+        

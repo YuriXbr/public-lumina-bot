@@ -1,6 +1,7 @@
 const { Events } = require('discord.js');
 const config = require('../private/config.json');
-const { noPermission, dashboardLog } = require('../scripts/logger');
+const { noPermission, dashboardLog, eventLogEmbed, commandErrorWarning } = require('../utils/logger/logger.js');
+const { ActivityType } = require('discord.js');
 
 const staffOwners = config.staff.owners;
 const staffAdmins = config.staff.admins.concat(staffOwners);
@@ -10,14 +11,13 @@ module.exports = {
 	name: Events.InteractionCreate,
 	async execute(interaction) {
 		if (!interaction.isChatInputCommand()) return;
+		const { client } = interaction;
 		
 		const command = interaction.client.commands.get(interaction.commandName);
 		if (!command) {
-			console.error(`No command matching ${interaction.commandName} was found.`);
+			commandErrorWarning(interaction, 'No command matching the name was found.', 'No command matching the name was found.');
 			return;
 		}
-		const { client } = interaction;
-		const { ActivityType } = require('discord.js');
 
         client.user.setActivity({
             name: config.bot.activity.name,
@@ -25,21 +25,19 @@ module.exports = {
         });
 
 
-		if (!staffOwners.includes(interaction.user.id) && command.permission == 'owner') return noPermission(command, interaction);
-		if (!staffAdmins.includes(interaction.user.id) && (command.permission == 'admin' )) return noPermission(command, interaction);
-		if (!staffModerators.includes(interaction.user.id) && command.permission == 'moderator') return noPermission(command, interaction);
+		if (!staffOwners.includes(interaction.user.id) && command.permission == 'owner') return noPermission(command, interaction, 'InteractionCreate');
+		if (!staffAdmins.includes(interaction.user.id) && (command.permission == 'admin' )) return noPermission(command, interaction, 'InteractionCreate');
+		if (!staffModerators.includes(interaction.user.id) && command.permission == 'moderator') return noPermission(command, interaction, 'InteractionCreate');
 
 		
 
 		try {
+			let buffer = interaction;
 			await command.execute(interaction);
+			eventLogEmbed(buffer, 'InteractionCreate', `Command ${interaction.commandName} was executed by ${interaction.user.tag} in ${interaction.guild.name} in ${interaction.lang}.`);
+			buffer = null;
 		} catch (error) {
-			console.error(error);
-			if (interaction.replied || interaction.deferred) {
-				await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
-			} else {
-				await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-			}
+			await commandErrorWarning(interaction, error, 'An error occurred while executing the command.');
 		}
 	},
 };

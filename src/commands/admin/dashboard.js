@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const config = require('../../private/config.json');
 const password = require('../../api/auth.js').generatedPassword;
-const { dashboardLog } = require('../../scripts/logger.js');
+const { dashboardLog } = require('../../utils/logger/logger.js');
 
 module.exports = {
     permission: 'admin',
@@ -12,9 +12,9 @@ module.exports = {
 		.setDescription('Reply with the dashboard credentials.'),
 
 	execute(interaction) {
-		
-			dashboardLog(`Password requested by ${interaction.user.tag} (ID: ${interaction.user.id})`, false);
-            interaction.reply({content: `Dashboard username: ${config.auth.username} \n Dashboard Password: ${password}`, ephemeral: true});
+			const client = interaction.client;
+			dashboardLog(client, `Password requested by ${interaction.user.tag} (ID: ${interaction.user.id})`, false);
+            interaction.reply({content: `Dashboard username: ${config.dashBoard.auth.username} \n Dashboard Password: ${password}`, ephemeral: true});
             
 	},
 };

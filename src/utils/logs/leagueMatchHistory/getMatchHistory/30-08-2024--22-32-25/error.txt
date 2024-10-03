@@ -1,0 +1,10 @@
+
+        Data: 30/08/2024
+        Hora: 22:32:25
+        -- Origem do comando: leagueMatchHistory
+        --- Função chamada: getMatchHistory
+        ---- Params: {
+  "region": "americas"
+}
+        ---- Error: AxiosError: Request failed with status code 400
+        

@@ -1,65 +1,83 @@
-{
+{ // remova todos os // para que o bot funcione
   "bot": {
-    "token": "",
-    "clientId": "",
-    "prefix": "l!",
-    "status": "online",
+    "token": "", // Token do bot do Discord
+    "clientId": "", // ID do cliente do bot do Discord
+    "prefix": "l!", // Prefixo dos comandos do bot
+    "status": "online", // Status do bot (online, idle, dnd, invisible)
     "activity": {
-      "type": "PLAYING",
-      "name": "Hello World"
+      "type": "PLAYING", // Tipo de atividade (PLAYING, STREAMING, LISTENING, WATCHING)
+      "name": "Hello World" // Nome da atividade
     },
-    "devmode": true
+    "devmode": true // Modo desenvolvedor (true ou false) se true os comandos só funcionarão na guild principal
   },
   "staff": {
     "owners": [
-      "",
+      "", // IDs dos donos do bot
       ""
     ],
-    "admins": [],
-    "moderators": []
+    "admins": [], // IDs dos administradores
+    "moderators": [] // IDs dos moderadores
   },
   "guilds": {
-    "main": "",
+    "main": "", // ID do servidor principal
     "logs": {
-      "guild": "",
-      "startChannel": "",
-      "errorChannel": "",
-      "eventsChannel": "",
-      "debugChannel": "",
-      "staffChannel": "",
-      "dashboardChannel": "",
-      "allChannel": ""
+      "guild": "", // ID do servidor de logs
+      "startChannel": "", // ID do canal de início
+      "errorChannel": "", // ID do canal de erros
+      "eventsChannel": "", // ID do canal de eventos
+      "debugChannel": "", // ID do canal de debug
+      "staffChannel": "", // ID do canal da equipe
+      "dashboardChannel": "", // ID do canal do dashboard
+      "allChannel": "", // ID do canal geral
+      "dataBaseChannel": "" // ID do canal do banco de dados
     },
     "deployGuilds": [
-      "",
+      "", // IDs dos servidores que os comandos serão carregados se estiver no devmode
       ""
     ],
     "callTimer": {
-      "enabled": true,
-      "notificationGuild": "",
-      "notificationChannel": "",
+      "enabled": true, // Timer de chamadas habilitado (true ou false)
+      "notificationGuild": "", // ID do servidor de notificações
+      "notificationChannel": "", // ID do canal de notificações
       "users": {
-        "user1": "",
-        "user2": ""
+        "user1": "", // ID do usuário 1
+        "user2": "" // ID do usuário 2
       }
     }
   },
   "riotApi": {
-    "apiKey": "RGAPI-YOUR_RIOT_API_KEY",
-    "region": "",
-    "server": "",
-    "baseUrl": "api.riotgames.com"
+    "apiKey": "RGAPI-YOUR_RIOT_API_KEY", // Chave da API da Riot
+    "region": "", // Região da API da Riot
+    "server": "", // Servidor da API da Riot
+    "baseUrl": "api.riotgames.com", // URL base da API da Riot
+    "maxRequests": 10 // Máximo de requisições permitidas
   },
   "dashBoard": {
-    "enabled": true,
-    "port": 3000,
-    "ip": "localhost",
+    "enabled": true, // Dashboard habilitado (true ou false)
+    "port": 3000, // Porta do dashboard
+    "ip": "localhost", // IP do dashboard
     "auth": {
-      "randPasswordLength": 32,
-      "randPasswordSlice": -16,
-      "randomPassword": false,
-      "username": "admin",
-      "password": "admin"
+      "randPasswordLength": 32, // Comprimento da senha aleatória
+      "randPasswordSlice": -16, // Fatiamento da senha aleatória
+      "randomPassword": false, // Senha aleatória habilitada (true ou false)
+      "username": "admin", // Nome de usuário do dashboard
+      "password": "admin" // Senha do dashboard (só sera usada se randomPassword for false)
+    }
+  },
+  "database": {
+    "enabled": true, // Banco de dados habilitado (true ou false)
+    "moongose": false, // Uso do Mongoose (true ou false)
+    "host": "127.0.0.1", // Host do banco de dados
+    "port": 3306, // Porta do banco de dados
+    "user": "root", // Usuário do banco de dados
+    "password": "root", // Senha do banco de dados
+    "database": "lumina", // Nome do banco de dados
+    "maxConnections": 10, // Máximo de conexões permitidas
+    "maxIdleTime": 30000, // Tempo máximo de inatividade
+    "mongoOptions": {
+      "mongoUri": "", // URI do MongoDB
+      "useNewUrlParser": true, // Uso do novo parser de URL (true ou false)
+      "useUnifiedTopology": true // Uso da topologia unificada (true ou false)
     }
   }
 }

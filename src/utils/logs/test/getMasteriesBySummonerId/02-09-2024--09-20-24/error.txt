@@ -1,0 +1,11 @@
+
+        Data: 02/09/2024
+        Hora: 09:20:24
+        -- Origem do comando: test
+        --- Função chamada: getMasteriesBySummonerId
+        ---- Params: {
+  "region": "americas",
+  "summonerId": "tTqHBPf6DPZFsunlYnBRHA6yDR0u2xevXMvRTekSnGw7sGaJ2OFnjTgw-g"
+}
+        ---- Error: AxiosError: Request failed with status code 403
+        

@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 var today = new Date(); var data = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear() + ' ' + today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
 const c = require('../colorCodes.js');
-const password = require('../../api/auth.js').generatedPassword;
+const cache = require('../../private/cache.json');
+const password = cache.cache.data.generatedPassword;
 const publicIp = require( 'public-ip' );
 
 let ip = 'localhost';
@@ -12,6 +13,9 @@ async function getExternalIp() {
 
 const port = process.env.PORT || 3000;
 
+/** Create Ready Embed
+ * @returns {MessageEmbed} - Returns a ready embed
+ */
 async function createReadyEmbed() {
     const externalIp = await getExternalIp();
     const readyEmbed = new Discord.EmbedBuilder()

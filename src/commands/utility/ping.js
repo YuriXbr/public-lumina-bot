@@ -7,6 +7,6 @@ module.exports = {
 		.setDescription('Replies with Pong!'),
 
 	execute(interaction) {
-		interaction.reply('Pong!');
+		interaction.reply('Pong! Time taken: ' + (Date.now() - interaction.createdTimestamp) + 'ms');
 	},
 };

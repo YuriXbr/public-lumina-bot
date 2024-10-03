@@ -1,0 +1,10 @@
+
+        Data: 02/09/2024
+        Hora: 09:07:18
+        -- Origem do comando: EMI
+        --- Função chamada: getMasteriesBySummonerId
+        ---- Params: {
+  "region": "americas"
+}
+        ---- Error: AxiosError: Request failed with status code 403
+        

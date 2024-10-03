@@ -1,6 +1,11 @@
 const { ChartJSNodeCanvas } = require('chartjs-node-canvas');
 const ChartDataLabels = require('chartjs-plugin-datalabels');
 
+/** Function to generate a match chart 
+* @param {object} participant - The player participant object
+* @returns {Buffer} - The image buffer
+*/
+
 async function generateMatchChart(participant) {
     const width = 500;
     const height = 300;
